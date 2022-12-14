@@ -10,6 +10,7 @@ public class Line {
 
     public Line(String name) {
         this.name = name;
+
     }
 
     public String getName() {
@@ -22,27 +23,21 @@ public class Line {
     private WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph =
             new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
-    public void addStationToGraph(String station){
-        timeGraph.addVertex(station);
-        distanceGraph.addVertex(station);
-    }
     public void addEdgeDistance(String start,String end,int distance){
+        distanceGraph.addVertex(start);
+        distanceGraph.addVertex(end);
         distanceGraph.setEdgeWeight(distanceGraph.addEdge(start,end),distance);
     }
     public void addEdgeTime(String start,String end,int time){
+        timeGraph.addVertex(start);
+        timeGraph.addVertex(end);
         timeGraph.setEdgeWeight(timeGraph.addEdge(start,end),time);
     }
-    public void validateGraph(List<String> stations,
+    public void validateGraph(
                               List<List<String>> timeBetweenStations,
                               List<List<String>> distanceBetweenStations,
                               int lineLength){
-        initialVertex(stations);
         initialEdgeWeight(timeBetweenStations, distanceBetweenStations, lineLength);
-    }
-    private void initialVertex(List<String> stations) {
-        for(int i = 0; i< stations.size(); i++){
-            addStationToGraph(stations.get(i));
-        }
     }
     private void initialEdgeWeight(List<List<String>> timeBetweenStations, List<List<String>> distanceBetweenStations, int lineLength) {
         for(int i = 0; i< lineLength; i++){
