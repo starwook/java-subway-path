@@ -20,4 +20,19 @@ public class LineInformation {
         }
        this.value = Integer.parseInt(information.get(2));
     }
+    public String getLineName(){
+        return lineName;
+    }
+    public String getStartStation(){
+        return this.startStation;
+    }
+    public String getEndStation(){
+        return endStation;
+    }
+    public LineType getLineType(){
+        return this.lineType;
+    }
+    public int getValue(){
+        return value;
+    }
 }
