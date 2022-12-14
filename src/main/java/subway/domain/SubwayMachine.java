@@ -12,5 +12,17 @@ public class SubwayMachine {
         initialLineRepository();
     }
 
+    private void initialLineRepository() {
+        for(int i=0;i<LINE_INIT.size();i++) {
+            Line line = new Line(LINE_INIT.get(i));
+            LineRepository.addLine(line);
+        }
+    }
+
+    private void initialStationRepository() {
+        for(int i=0;i<STATION_INIT.size();i++){
+            Station station = new Station(STATION_INIT.get(i));
+            StationRepository.addStation(station);
+        }
     }
 }
