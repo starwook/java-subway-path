@@ -12,7 +12,9 @@ public class Line {
     public Line(String name) {
         this.name = name;
     }
-
+    public List<LineInformation> getLineInformations(){
+        return lineInformations;
+    }
     public String getName() {
         return name;
     }
