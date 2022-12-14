@@ -33,5 +33,24 @@ public class Line {
     public void addEdgeTime(String start,String end,int time){
         timeGraph.setEdgeWeight(timeGraph.addEdge(start,end),time);
     }
+    public void validateGraph(List<String> stations,
+                              List<List<String>> timeBetweenStations,
+                              List<List<String>> distanceBetweenStations,
+                              int lineLength){
+        for(int i=0;i<stations.size();i++){
+            addStationToGraph(stations.get(i));
+        }
+        initialEachGraph(timeBetweenStations, distanceBetweenStations, lineLength);
+    }
+    private void initialEachGraph(List<List<String>> timeBetweenStations, List<List<String>> distanceBetweenStations, int lineLength) {
+        for(int i = 0; i< lineLength; i++){
+            addEdgeDistance(distanceBetweenStations.get(i).get(0),
+                    distanceBetweenStations.get(i).get(1),
+                    Integer.parseInt(distanceBetweenStations.get(i).get(2)));
+            addEdgeTime(timeBetweenStations.get(i).get(0),
+                    timeBetweenStations.get(i).get(1),
+                    Integer.parseInt(timeBetweenStations.get(i).get(2)));
+        }
+    }
 
 }
