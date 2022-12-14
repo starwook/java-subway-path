@@ -3,7 +3,6 @@ package subway.domain;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
@@ -37,12 +36,15 @@ public class Line {
                               List<List<String>> timeBetweenStations,
                               List<List<String>> distanceBetweenStations,
                               int lineLength){
-        for(int i=0;i<stations.size();i++){
+        initialVertex(stations);
+        initialEdgeWeight(timeBetweenStations, distanceBetweenStations, lineLength);
+    }
+    private void initialVertex(List<String> stations) {
+        for(int i = 0; i< stations.size(); i++){
             addStationToGraph(stations.get(i));
         }
-        initialEachGraph(timeBetweenStations, distanceBetweenStations, lineLength);
     }
-    private void initialEachGraph(List<List<String>> timeBetweenStations, List<List<String>> distanceBetweenStations, int lineLength) {
+    private void initialEdgeWeight(List<List<String>> timeBetweenStations, List<List<String>> distanceBetweenStations, int lineLength) {
         for(int i = 0; i< lineLength; i++){
             addEdgeDistance(distanceBetweenStations.get(i).get(0),
                     distanceBetweenStations.get(i).get(1),
