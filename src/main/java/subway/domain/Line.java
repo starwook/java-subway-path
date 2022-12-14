@@ -3,6 +3,7 @@ package subway.domain;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
@@ -10,7 +11,6 @@ public class Line {
 
     public Line(String name) {
         this.name = name;
-
     }
 
     public String getName() {
@@ -22,7 +22,11 @@ public class Line {
             new WeightedMultigraph<>(DefaultWeightedEdge.class);
     private WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph =
             new WeightedMultigraph<>(DefaultWeightedEdge.class);
+    private List<LineInformation> lineInformations = new ArrayList<>();
 
+    public void addLineInforMation(LineInformation lineInformation){
+        this.lineInformations.add(lineInformation);
+    }
     public void addEdgeDistance(String start,String end,int distance){
         distanceGraph.addVertex(start);
         distanceGraph.addVertex(end);
