@@ -10,8 +10,8 @@ public class SubwayMachine {
     private static List<String> LINE_INIT=Arrays.asList("2호선","3호선","신분당선");
     List<String> twoTime1 = Arrays.asList("교대역","강남역","3","2호선","시간");
     List<String> twoTime2 =Arrays.asList("강남역","역삼역","3","2호선","시간");
-    List<String> twoDistance1 = Arrays.asList("교대역","강남역","2호선","거리");
-    List<String> twoDistance2 = Arrays.asList("강남역","역삼역","2호선","거리");
+    List<String> twoDistance1 = Arrays.asList("교대역","강남역","2","2호선","거리");
+    List<String> twoDistance2 = Arrays.asList("강남역","역삼역","2","2호선","거리");
     List<String> threeTime1 = Arrays.asList("교대역","남부터미널역","2","3호선","시간");
     List<String> threeTime2 = Arrays.asList("남부터미널역","양재역","5","3호선","시간");
     List<String> threeTime3 =Arrays.asList("양재역","매봉역","1","3호선","시간");
@@ -39,12 +39,22 @@ public class SubwayMachine {
     }
 
     private void initialLineRepository() {
+        List<LineInformation> lineInformations = LineInformationRepository.getLineInformations();
         for(int i=0;i<LINE_INIT.size();i++){
             Line line = new Line(LINE_INIT.get(i));
-
+            addLineInformationToLine(lineInformations, line);
             LineRepository.addLine(line);
         }
     }
+
+    private void addLineInformationToLine(List<LineInformation> lineInformations, Line line) {
+        for(int j = 0; j< lineInformations.size(); j++){
+            if(lineInformations.get(j).getLineName().equals(line.getName())){
+                line.addLineInforMation(lineInformations.get(j));
+            }
+        }
+    }
+
     private void initialStationRepository() {
         for(int i=0;i<STATION_INIT.size();i++){
             Station station = new Station(STATION_INIT.get(i));
