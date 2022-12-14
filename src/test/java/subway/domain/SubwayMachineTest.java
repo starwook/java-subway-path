@@ -32,7 +32,7 @@ class SubwayMachineTest {
             for(int j=0;j<lineInformations.size();j++){
                 System.out.print(lineInformations.get(j).getStartStation()+"~");
                 System.out.print(lineInformations.get(j).getEndStation()+"/");
-                System.out.println(lineInformations.get(j).getValue()+":"+lineInformations.get(i).getLineType());
+                System.out.println(lineInformations.get(j).getValue()+":"+lineInformations.get(j).getLineType());
             }
             System.out.println("-------------------");
         }
