@@ -25,4 +25,5 @@ public class SubwayMachine {
             StationRepository.addStation(station);
         }
     }
+
 }
