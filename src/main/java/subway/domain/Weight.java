@@ -15,7 +15,7 @@ public class Weight {
         machine.addVertex(end);
         machine.setEdgeWeight(machine.addEdge(start,end),value);
     }
-    public Weight(){
+    public Weight(List<LineInformation> lineInformations){
 
         dijkstraShortestPath = new DijkstraShortestPath(machine);
     }

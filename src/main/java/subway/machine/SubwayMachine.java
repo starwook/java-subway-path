@@ -3,13 +3,12 @@ package subway.machine;
 import subway.Repository.LineInformationRepository;
 import subway.Repository.LineRepository;
 import subway.Repository.StationRepository;
-import subway.domain.Line;
-import subway.domain.LineInformation;
-import subway.domain.Station;
-import subway.domain.Weight;
+import subway.domain.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SubwayMachine {
     private static List<String> STATION_INIT = Arrays.asList("교대역","강남역",
@@ -36,6 +35,15 @@ public class SubwayMachine {
         initialLineInformationRepository();
         initialStationRepository();
         initialLineRepository();
+
+    }
+    public void calculate(){
+        List<LineInformation> lineInformations =
+                LineInformationRepository.getLineInformations()
+                        .stream()
+                        .filter(lineInformation -> lineInformation.getLineType().equals(LineType.TIME))
+                        .collect(Collectors.toList());
+        Weight weight = new Weight(lineInformations);
     }
 
     private void initialLineInformationRepository() {
