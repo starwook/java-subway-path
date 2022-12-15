@@ -38,5 +38,13 @@ class SubwayMachineTest {
             System.out.println("-------------------");
         }
     }
+    @Test
+    void calculate(){
+        SubwayMachine subwayMachine = new SubwayMachine();
+        List<String> result = subwayMachine.init();
+        for(int i=0;i<result.size();i++){
+            System.out.println(result.get(i));
+        }
+    }
 
 }

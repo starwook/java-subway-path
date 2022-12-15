@@ -31,19 +31,21 @@ public class SubwayMachine {
     List<List<String>> allLineInformation = Arrays.asList(twoTime1,twoTime2,twoDistance1,twoDistance2,
             threeTime1,threeTime2,threeTime3,threeDistance1,threeDistance2,threeDistance3,
             bdTime1,bdTime2,bdDistance1,bdDistance2);
-    public void init(){
+    public List<String> init(){
         initialLineInformationRepository();
         initialStationRepository();
         initialLineRepository();
-
+        Weight weight = calculate(LineType.DISTANCE);
+        List<String> shortestPath = weight.getShortestPath("교대역","양재역");
+        return shortestPath;
     }
-    public void calculate(){
+    public Weight calculate(LineType lineType){
         List<LineInformation> lineInformations =
                 LineInformationRepository.getLineInformations()
                         .stream()
-                        .filter(lineInformation -> lineInformation.getLineType().equals(LineType.TIME))
+                        .filter(lineInformation -> lineInformation.getLineType().equals(lineType))
                         .collect(Collectors.toList());
-        Weight weight = new Weight(lineInformations);
+        return new Weight(lineInformations);
     }
 
     private void initialLineInformationRepository() {
