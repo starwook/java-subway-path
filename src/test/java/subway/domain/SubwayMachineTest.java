@@ -1,8 +1,9 @@
 package subway.domain;
 
 import org.junit.jupiter.api.Test;
-import subway.domain.Repository.LineInformationRepository;
-import subway.domain.Repository.LineRepository;
+import subway.Repository.LineInformationRepository;
+import subway.Repository.LineRepository;
+import subway.machine.SubwayMachine;
 
 import java.util.List;
 

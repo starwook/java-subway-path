@@ -1,4 +1,4 @@
-package subway.domain.Repository;
+package subway.Repository;
 
 import subway.domain.LineInformation;
 

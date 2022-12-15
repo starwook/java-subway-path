@@ -1,8 +1,12 @@
-package subway.domain;
+package subway.machine;
 
-import subway.domain.Repository.LineInformationRepository;
-import subway.domain.Repository.LineRepository;
-import subway.domain.Repository.StationRepository;
+import subway.Repository.LineInformationRepository;
+import subway.Repository.LineRepository;
+import subway.Repository.StationRepository;
+import subway.domain.Line;
+import subway.domain.LineInformation;
+import subway.domain.Station;
+import subway.domain.Weight;
 
 import java.util.Arrays;
 import java.util.List;
