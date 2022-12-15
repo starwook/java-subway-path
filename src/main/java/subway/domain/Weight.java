@@ -16,8 +16,16 @@ public class Weight {
         machine.setEdgeWeight(machine.addEdge(start,end),value);
     }
     public Weight(List<LineInformation> lineInformations){
-
+        initiateEdges(lineInformations);
         dijkstraShortestPath = new DijkstraShortestPath(machine);
+    }
+
+    private void initiateEdges(List<LineInformation> lineInformations) {
+        for(int i = 0; i< lineInformations.size(); i++){
+            addEdgeValue(lineInformations.get(i).getStartStation(),
+                    lineInformations.get(i).getEndStation(),
+                    lineInformations.get(i).getValue());
+        }
     }
 
     public List<String> getShortestPath(String start,String end){
