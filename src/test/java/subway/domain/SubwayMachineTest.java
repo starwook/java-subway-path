@@ -1,10 +1,10 @@
 package subway.domain;
 
 import org.junit.jupiter.api.Test;
+import subway.domain.Repository.LineInformationRepository;
+import subway.domain.Repository.LineRepository;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SubwayMachineTest {
 
@@ -25,7 +25,7 @@ class SubwayMachineTest {
     void checkLineInformationOfLines(){
         SubwayMachine subwayMachine = new SubwayMachine();
         subwayMachine.init();
-        List<Line> lines =LineRepository.lines();
+        List<Line> lines = LineRepository.lines();
         for(int i=0;i<lines.size();i++){
             System.out.println(lines.get(i).getName());
             List<LineInformation> lineInformations = lines.get(i).getLineInformations();

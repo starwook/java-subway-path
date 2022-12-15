@@ -18,7 +18,9 @@ public class Line {
     public String getName() {
         return name;
     }
-
+    public void addLineInforMation(LineInformation lineInformation){
+        this.lineInformations.add(lineInformation);
+    }
     // 추가 기능 구현
     private WeightedMultigraph<String, DefaultWeightedEdge> timeGraph =
             new WeightedMultigraph<>(DefaultWeightedEdge.class);
@@ -26,9 +28,7 @@ public class Line {
             new WeightedMultigraph<>(DefaultWeightedEdge.class);
     private List<LineInformation> lineInformations = new ArrayList<>();
 
-    public void addLineInforMation(LineInformation lineInformation){
-        this.lineInformations.add(lineInformation);
-    }
+
     public void addEdgeDistance(String start,String end,int distance){
         distanceGraph.addVertex(start);
         distanceGraph.addVertex(end);
